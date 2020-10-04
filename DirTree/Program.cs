@@ -7,9 +7,12 @@ namespace DirTree
     {
         static void Main(string[] args)
         {
-            var dirInfo = new DirectoryInfo(".");
+            string path = @"C:\Users\Mathias\GoogleDrive\DTU\11-semester\Master_things";
 
-            Console.WriteLine(dirInfo.ToString());
+            var runner = new TreeRunner(path, 0);
+            runner.Run();
+
+            Console.WriteLine("Done :)");
         }
     }
 }
