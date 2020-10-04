@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 
 namespace DirTree
 {
@@ -6,7 +7,9 @@ namespace DirTree
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            var dirInfo = new DirectoryInfo(".");
+
+            Console.WriteLine(dirInfo.ToString());
         }
     }
 }
