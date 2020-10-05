@@ -1,5 +1,4 @@
 ﻿using System;
-using System.IO;
 
 namespace DirTree
 {
@@ -7,7 +6,7 @@ namespace DirTree
     {
         static void Main(string[] args)
         {
-            string path = @"C:\Users\Mathias\GoogleDrive\DTU\11-semester\Master_things";
+            string path = @"C:\Users\Mathias\GoogleDrive\DTU\10-semester\Spectral_element_method";
 
             var runner = new TreeRunner(path, 0);
             runner.Run();
