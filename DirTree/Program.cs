@@ -8,7 +8,7 @@ namespace DirTree
         {
             string path = @"C:\Users\Mathias\GoogleDrive\DTU\10-semester\Spectral_element_method";
 
-            var runner = new TreeRunner(path, 0);
+            var runner = new TreeRunner(path);
             runner.Run();
 
             Console.WriteLine("Done :)");
