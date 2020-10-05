@@ -51,7 +51,7 @@ namespace DirTree
         {
             var filesInDirectory = directoryInfo.GetFiles();
             var directoriesInDirectory = directoryInfo.GetDirectories();
-            var folderItems = new List<FolderItem>();
+            var folderItems = new List<FolderItem>(filesInDirectory.Length + directoriesInDirectory.Length);
 
             folderItems.AddRange(filesInDirectory
                 .Select(x =>
