@@ -21,9 +21,9 @@ namespace DirTree
         public void Run()
         {
             var directoryInfo = new DirectoryInfo(_path);
-            var directoryTreeInfos = GetDirectoryTreeInfo(directoryInfo);
+            var folderItems = GetFolderItems(directoryInfo);
 
-            foreach (var info in directoryTreeInfos.OrderBy(x => x.Path))
+            foreach (var info in folderItems.OrderBy(x => x.Path))
             {
                 WriteNameToOutput(info);
 
@@ -47,13 +47,13 @@ namespace DirTree
             Console.WriteLine(sb.ToString());
         }
 
-        private List<FolderItem> GetDirectoryTreeInfo(DirectoryInfo directoryInfo)
+        private List<FolderItem> GetFolderItems(DirectoryInfo directoryInfo)
         {
             var filesInDirectory = directoryInfo.GetFiles();
-            var subDirectoriesInDirectory = directoryInfo.GetDirectories();
-            var directoryTreeInfos = new List<FolderItem>();
+            var directoriesInDirectory = directoryInfo.GetDirectories();
+            var folderItems = new List<FolderItem>();
 
-            directoryTreeInfos.AddRange(filesInDirectory
+            folderItems.AddRange(filesInDirectory
                 .Select(x =>
                     new FolderItem
                     {
@@ -62,7 +62,7 @@ namespace DirTree
                         IsDirectory = false
                     })
             );
-            directoryTreeInfos.AddRange(subDirectoriesInDirectory
+            folderItems.AddRange(directoriesInDirectory
                 .Select(x =>
                     new FolderItem
                     {
@@ -72,7 +72,7 @@ namespace DirTree
                     })
             );
 
-            return directoryTreeInfos;
+            return folderItems;
         }
     }
 }
