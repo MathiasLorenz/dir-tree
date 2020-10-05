@@ -1,0 +1,3 @@
+﻿ - Create a way to track number of files and directories listed that can be shown after traversal.
+ - Get inputs to program from arguments and parse these.
+ - Add more options e.g. colors etc.
