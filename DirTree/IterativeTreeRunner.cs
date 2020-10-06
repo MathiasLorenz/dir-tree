@@ -17,11 +17,12 @@ namespace DirTree
             _level = level;
 		}
 
-        // Could return an object to reflect number of directories and files analyzed.
-        public void Run()
+        public FolderCounts Run()
         {
             var directoryInfo = new DirectoryInfo(_path);
             var folderItems = GetFolderItems(directoryInfo);
+            int fileCount = 0;
+            int directoryCount = 0;
 
             foreach (var info in folderItems.OrderBy(x => x.Path))
             {
@@ -30,9 +31,18 @@ namespace DirTree
                 if (info.IsDirectory)
                 {
                     var runner = new IterativeTreeRunner(info.Path, _level + 1);
-                    runner.Run();
+                    var subFolderCounts = runner.Run();
+
+                    fileCount += subFolderCounts.FileCount;
+                    directoryCount += subFolderCounts.DirectoryCount + 1;
+                }
+                else
+                {
+                    fileCount++;
                 }
             }
+
+            return new FolderCounts(fileCount, directoryCount);
         }
 
         private void WriteNameToOutput(FolderItem info)

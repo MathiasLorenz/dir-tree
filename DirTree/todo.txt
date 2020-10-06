@@ -1,2 +1,1 @@
-﻿ - Create a way to track number of files and directories listed that can be shown after traversal.
- - Add more options e.g. colors etc.
+﻿ - Add more options e.g. colors etc.
