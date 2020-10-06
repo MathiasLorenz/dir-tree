@@ -8,14 +8,14 @@ namespace DirTree
 {
     internal class IterativeTreeRunner
     {
-		private readonly int _level;
+        private readonly int _level;
         private readonly string _path;
 
         public IterativeTreeRunner(string path, int level)
         {
             _path = path;
             _level = level;
-		}
+        }
 
         public FolderCounts Run()
         {

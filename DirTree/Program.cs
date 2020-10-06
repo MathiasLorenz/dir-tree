@@ -8,8 +8,6 @@ namespace DirTree
         {
             var runner = new TreeRunner(path);
             runner.Run();
-
-            Console.WriteLine("Done :)");
         }
     }
 }
