@@ -4,10 +4,8 @@ namespace DirTree
 {
     class Program
     {
-        static void Main(string[] args)
+        static void Main(string path)
         {
-            string path = @"C:\Users\Mathias\GoogleDrive\DTU\10-semester\Spectral_element_method";
-
             var runner = new TreeRunner(path);
             runner.Run();
 
