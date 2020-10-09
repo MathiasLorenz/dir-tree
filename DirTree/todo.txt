@@ -1,1 +1,8 @@
-﻿ - Add more options e.g. colors etc.
+﻿ - Create options class.
+ - Add optional colors to output.
+ - Add different options.
+	o Order by last modification (instead of alphebetically).
+	o Display file size with.
+	o --filelimit N only shows folder with >= N items.
+	o -d to only show directories
+	o -L for max depth to show
