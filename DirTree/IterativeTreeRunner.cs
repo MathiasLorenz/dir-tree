@@ -10,15 +10,22 @@ namespace DirTree
     {
         private readonly int _level;
         private readonly string _path;
+        private readonly int _maxDepth;
 
-        public IterativeTreeRunner(string path, int level)
+        public IterativeTreeRunner(string path, int maxDepth, int level)
         {
             _path = path;
+            _maxDepth = maxDepth;
             _level = level;
         }
 
         public FolderCounts Run()
         {
+            if (_level == _maxDepth)
+            {
+                return new FolderCounts(0, 0);
+            }
+
             var directoryInfo = new DirectoryInfo(_path);
             var folderItems = GetFolderItems(directoryInfo);
             int fileCount = 0;
@@ -30,7 +37,7 @@ namespace DirTree
 
                 if (info.IsDirectory)
                 {
-                    var runner = new IterativeTreeRunner(info.Path, _level + 1);
+                    var runner = new IterativeTreeRunner(info.Path, _maxDepth, _level + 1);
                     var subFolderCounts = runner.Run();
 
                     fileCount += subFolderCounts.FileCount;

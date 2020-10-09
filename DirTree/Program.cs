@@ -2,9 +2,9 @@
 {
     class Program
     {
-        static void Main(string path)
+        static void Main(string path, int maxDepth = 10)
         {
-            var runner = new TreeRunner(path);
+            var runner = new TreeRunner(path, maxDepth);
             runner.Run();
         }
     }
