@@ -26,7 +26,7 @@ namespace DirTree
 
             foreach (var info in folderItems.OrderBy(x => x.Path))
             {
-                WriteNameToOutput(info);
+                WriteNameToOutput(info.Name);
 
                 if (info.IsDirectory)
                 {
@@ -45,7 +45,7 @@ namespace DirTree
             return new FolderCounts(fileCount, directoryCount);
         }
 
-        private void WriteNameToOutput(FolderItem info)
+        private void WriteNameToOutput(string name)
         {
             var sb = new StringBuilder();
             for (int i = 0; i < _level; i++)
@@ -53,7 +53,7 @@ namespace DirTree
                 sb.Append("    ");
             }
             sb.Append("|-- ");
-            sb.Append(info.Name);
+            sb.Append(name);
             Console.WriteLine(sb.ToString());
         }
 

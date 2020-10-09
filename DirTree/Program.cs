@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace DirTree
+﻿namespace DirTree
 {
     class Program
     {
