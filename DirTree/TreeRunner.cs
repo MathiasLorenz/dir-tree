@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Text;
 
 namespace DirTree
 {
@@ -23,10 +24,23 @@ namespace DirTree
 
             var iterativeRunner = new IterativeTreeRunner(_options, 0);
             var folderCounts = iterativeRunner.Run();
-            var (fileCount, directoryCount) = folderCounts; // You can do this too. You can also deconstruct in the line above.
 
-            Console.WriteLine();
-            Console.WriteLine($"{ directoryCount } director{ (directoryCount > 1 ? "ies" : "y")}, { fileCount } file{ (fileCount > 1 ? "s" : "" )}");
+            PrintFolderCounts(folderCounts);
+        }
+
+        private void PrintFolderCounts(FolderCounts folderCounts)
+        {
+            var (fileCount, directoryCount) = folderCounts;
+            var stringBuilder = new StringBuilder();
+            stringBuilder.Append('\n');
+
+            stringBuilder.Append($"{ directoryCount } director{ (directoryCount > 1 ? "ies" : "y")}");
+            if (_options.OnlyDirectories == false)
+            {
+                stringBuilder.Append($", { fileCount } file{ (fileCount > 1 ? "s" : "")}");
+            }
+
+            Console.WriteLine(stringBuilder.ToString());
         }
 
         private bool EnsurePath()
