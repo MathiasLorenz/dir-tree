@@ -5,13 +5,11 @@ namespace DirTree
 {
     public class TreeRunner
     {
-        private readonly string _path;
-        private readonly int _maxDepth;
+        private readonly TreeRunnerOptions _options;
 
-        public TreeRunner(string path, int maxDepth)
+        public TreeRunner(TreeRunnerOptions options)
         {
-            _path = path;
-            _maxDepth = maxDepth;
+            _options = options;
         }
 
         public void Run()
@@ -21,9 +19,9 @@ namespace DirTree
                 return;
             }
 
-            Console.WriteLine(_path);
+            Console.WriteLine(_options.Path);
 
-            var iterativeRunner = new IterativeTreeRunner(_path, _maxDepth, 0);
+            var iterativeRunner = new IterativeTreeRunner(_options, 0);
             var folderCounts = iterativeRunner.Run();
             var (fileCount, directoryCount) = folderCounts; // You can do this too. You can also deconstruct in the line above.
 
@@ -35,7 +33,7 @@ namespace DirTree
         {
             try
             {
-                var directoryInfo = new DirectoryInfo(_path);
+                var directoryInfo = new DirectoryInfo(_options.Path);
                 if (directoryInfo.Exists == false)
                 {
                     Console.WriteLine("The specified path was not a folder. Please supply a proper folder.");
@@ -52,5 +50,11 @@ namespace DirTree
 
             return true;
         }
+    }
+
+    public record TreeRunnerOptions
+    {
+        public string Path { get; init; } = "";
+        public int MaxDepth { get; set; } = 10;
     }
 }
