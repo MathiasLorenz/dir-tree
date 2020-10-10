@@ -66,17 +66,22 @@ namespace DirTree
         {
             var filesInDirectory = directoryInfo.GetFiles();
             var directoriesInDirectory = directoryInfo.GetDirectories();
-            var folderItems = new List<FolderItem>(filesInDirectory.Length + directoriesInDirectory.Length);
+            var capacity = directoriesInDirectory.Length + (_options.OnlyDirectories == true ? 0 : filesInDirectory.Length);
+            var folderItems = new List<FolderItem>(capacity);
 
-            folderItems.AddRange(filesInDirectory
-                .Select(x =>
-                    new FolderItem
-                    {
-                        Path = x.FullName,
-                        Name = x.Name,
-                        IsDirectory = false
-                    })
-            );
+            if (_options.OnlyDirectories == false)
+            {
+                folderItems.AddRange(filesInDirectory
+                    .Select(x =>
+                        new FolderItem
+                        {
+                            Path = x.FullName,
+                            Name = x.Name,
+                            IsDirectory = false
+                        })
+                );
+            }
+            
             folderItems.AddRange(directoriesInDirectory
                 .Select(x =>
                     new FolderItem
