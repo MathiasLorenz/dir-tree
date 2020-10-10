@@ -5,4 +5,3 @@
 	o Display file size with.
 	o --filelimit N only shows folder with >= N items.
 	o -d to only show directories
-	o -L for max depth to show
