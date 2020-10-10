@@ -2,7 +2,7 @@
   "profiles": {
     "DirTree": {
       "commandName": "Project",
-      "commandLineArgs": "--path \"C:\\Users\\Mathias\\GoogleDrive\\DTU\\10-semester\\Spectral_element_method\""
+      "commandLineArgs": "--path \"C:\\Users\\malle\\source\\repos\\dir-tree\""
     }
   }
 }

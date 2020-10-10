@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 
 namespace DirTree
 {
@@ -15,6 +16,11 @@ namespace DirTree
 
         public void Run()
         {
+            if (!EnsurePath())
+            {
+                return;
+            }
+
             Console.WriteLine(_path);
 
             var iterativeRunner = new IterativeTreeRunner(_path, _maxDepth, 0);
@@ -23,6 +29,28 @@ namespace DirTree
 
             Console.WriteLine();
             Console.WriteLine($"{ directoryCount } director{ (directoryCount > 1 ? "ies" : "y")}, { fileCount } file{ (fileCount > 1 ? "s" : "" )}");
+        }
+
+        private bool EnsurePath()
+        {
+            try
+            {
+                var directoryInfo = new DirectoryInfo(_path);
+                if (directoryInfo.Exists == false)
+                {
+                    Console.WriteLine("The specified path was not a folder. Please supply a proper folder.");
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Could not open specified directory.");
+                Console.WriteLine("Exception thrown was:");
+                Console.WriteLine(ex.ToString());
+                return false;
+            }
+
+            return true;
         }
     }
 }
