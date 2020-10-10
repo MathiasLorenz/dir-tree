@@ -57,4 +57,6 @@ namespace DirTree
         public string Path { get; init; } = "";
         public int MaxDepth { get; set; } = 10;
     }
+
+    internal record FolderCounts(int FileCount, int DirectoryCount);
 }
