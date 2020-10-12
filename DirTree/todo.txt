@@ -5,3 +5,4 @@
 	o Display file size with.
 	o --filelimit N only shows folder with >= N items.
 	o -d to only show directories
+ - Consider making program and tests operating system agnostic (i.e. insert / or \ depending on OS)
