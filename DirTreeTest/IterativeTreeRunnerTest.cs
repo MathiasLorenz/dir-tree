@@ -25,6 +25,18 @@ namespace DirTreeTest
         public void Run_NoOptionsSet_Runs()
         {
             string basePath = "test-dir";
+            SetUpFolders(basePath);
+
+            var iterativeRunner = new IterativeTreeRunner(new TreeRunnerOptions { Path = basePath }, 0);
+            var result = iterativeRunner.Run();
+
+            result.ShouldNotBeNull();
+            result.DirectoryCount.ShouldBe(3);
+            result.FileCount.ShouldBe(8);
+        }
+
+        private void SetUpFolders(string basePath)
+        {
             var directoryInfo = new DirectoryInfo(basePath);
             if (directoryInfo.Exists)
             {
@@ -45,13 +57,6 @@ namespace DirTreeTest
             using (File.Create(subDirectory.FullName + @"\f6")) { }
             using (File.Create(subDirectory.FullName + @"\f7")) { }
             using (File.Create(subDirectory.FullName + @"\f8")) { }
-
-            var iterativeRunner = new IterativeTreeRunner(new TreeRunnerOptions { Path = basePath }, 0);
-            var result = iterativeRunner.Run();
-
-            result.ShouldNotBeNull();
-            result.DirectoryCount.ShouldBe(3);
-            result.FileCount.ShouldBe(8);
         }
     }
 }
