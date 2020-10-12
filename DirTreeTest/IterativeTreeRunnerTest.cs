@@ -52,8 +52,6 @@ namespace DirTreeTest
             result.ShouldNotBeNull();
             result.DirectoryCount.ShouldBe(3);
             result.FileCount.ShouldBe(8);
-
-            Directory.Delete(basePath, true);
         }
     }
 }
