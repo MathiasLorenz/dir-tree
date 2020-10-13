@@ -24,8 +24,7 @@ namespace DirTreeTest
         [TestMethod]
         public void Run_NoOptionsSet_Runs()
         {
-            string basePath = "test-dir";
-            SetUpFolders(basePath);
+            string basePath = SetUpFolders();
 
             var iterativeRunner = new IterativeTreeRunner(new TreeRunnerOptions { Path = basePath }, 0);
             var result = iterativeRunner.Run();
@@ -43,8 +42,7 @@ namespace DirTreeTest
         [DataRow(10, 3, 8)]
         public void Run_MaxDepths_Runs(int maxDepth, int expectedDirectoryCount, int expectedFileCount)
         {
-            string basePath = "test-dir";
-            SetUpFolders(basePath);
+            string basePath = SetUpFolders();
 
             var options = new TreeRunnerOptions
             {
@@ -59,8 +57,9 @@ namespace DirTreeTest
             result.FileCount.ShouldBe(expectedFileCount);
         }
 
-        private void SetUpFolders(string basePath)
+        private string SetUpFolders()
         {
+            string basePath = "test-dir";
             var directoryInfo = new DirectoryInfo(basePath);
             if (directoryInfo.Exists)
             {
@@ -81,6 +80,8 @@ namespace DirTreeTest
             using (File.Create(subSubDirectory.FullName + @"\f6")) { }
             using (File.Create(subSubDirectory.FullName + @"\f7")) { }
             using (File.Create(subSubDirectory.FullName + @"\f8")) { }
+
+            return basePath;
         }
     }
 }
