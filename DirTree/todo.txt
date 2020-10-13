@@ -1,5 +1,4 @@
-﻿ - Create options class.
- - Add optional colors to output.
+﻿ - Add optional colors to output.
  - Add different options.
 	o Order by last modification (instead of alphebetically).
 	o Display file size with.
