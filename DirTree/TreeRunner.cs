@@ -22,8 +22,8 @@ namespace DirTree
 
             Console.WriteLine(_options.Path);
 
-            var iterativeRunner = new IterativeTreeRunner(_options, 0);
-            var folderCounts = iterativeRunner.Run();
+            var recursiveRunner = new RecursiveTreeRunner(_options, 0);
+            var folderCounts = recursiveRunner.Run();
 
             PrintFolderCounts(folderCounts);
         }

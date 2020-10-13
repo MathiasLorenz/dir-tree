@@ -8,12 +8,12 @@ using System.Text;
 [assembly: InternalsVisibleTo("DirTreeTest")]
 namespace DirTree
 {
-    internal class IterativeTreeRunner
+    internal class RecursiveTreeRunner
     {
         private readonly TreeRunnerOptions _options;
         private readonly int _level;
 
-        public IterativeTreeRunner(TreeRunnerOptions options, int level)
+        public RecursiveTreeRunner(TreeRunnerOptions options, int level)
         {
             _options = options;
             _level = level;
@@ -37,7 +37,7 @@ namespace DirTree
 
                 if (info.IsDirectory)
                 {
-                    var runner = new IterativeTreeRunner(_options with { Path = info.Path }, _level + 1);
+                    var runner = new RecursiveTreeRunner(_options with { Path = info.Path }, _level + 1);
                     var subFolderCounts = runner.Run();
 
                     fileCount += subFolderCounts.FileCount;

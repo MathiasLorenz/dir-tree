@@ -6,7 +6,7 @@ using System.IO;
 namespace DirTreeTest
 {
     [TestClass]
-    public class IterativeTreeRunnerTest
+    public class RecursiveTreeRunnerTest
     {
         [TestMethod]
         public void CanBeConstructed_IsNotNull()
@@ -15,10 +15,10 @@ namespace DirTreeTest
             {
                 Path = "."
             };
-            var runner = new IterativeTreeRunner(options, 0);
+            var runner = new RecursiveTreeRunner(options, 0);
 
             runner.ShouldNotBeNull();
-            runner.ShouldBeOfType<IterativeTreeRunner>();
+            runner.ShouldBeOfType<RecursiveTreeRunner>();
         }
 
         [TestMethod]
@@ -26,8 +26,8 @@ namespace DirTreeTest
         {
             string basePath = SetUpFolders();
 
-            var iterativeRunner = new IterativeTreeRunner(new TreeRunnerOptions { Path = basePath }, 0);
-            var result = iterativeRunner.Run();
+            var recursiveRunner = new RecursiveTreeRunner(new TreeRunnerOptions { Path = basePath }, 0);
+            var result = recursiveRunner.Run();
 
             result.ShouldNotBeNull();
             result.DirectoryCount.ShouldBe(3);
@@ -49,7 +49,7 @@ namespace DirTreeTest
                 Path = basePath,
                 MaxDepth = maxDepth
             };
-            var iterativeRunner = new IterativeTreeRunner(options, 0);
+            var iterativeRunner = new RecursiveTreeRunner(options, 0);
             var result = iterativeRunner.Run();
 
             result.ShouldNotBeNull();
