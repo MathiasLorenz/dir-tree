@@ -57,6 +57,27 @@ namespace DirTreeTest
             result.FileCount.ShouldBe(expectedFileCount);
         }
 
+        [TestMethod]
+        [DataRow(1, 2)]
+        [DataRow(2, 3)]
+        public void Run_OnlyDirectories_Runs(int maxDepth, int expectedDirectoryCount)
+        {
+            string basePath = SetUpFolders();
+
+            var options = new TreeRunnerOptions
+            {
+                Path = basePath,
+                OnlyDirectories = true,
+                MaxDepth = maxDepth
+            };
+            var iterativeRunner = new RecursiveTreeRunner(options, 0);
+            var result = iterativeRunner.Run();
+
+            result.ShouldNotBeNull();
+            result.DirectoryCount.ShouldBe(expectedDirectoryCount);
+            result.FileCount.ShouldBe(0);
+        }
+
         private string SetUpFolders()
         {
             string basePath = "test-dir";
