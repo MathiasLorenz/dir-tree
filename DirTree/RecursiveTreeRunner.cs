@@ -64,7 +64,7 @@ namespace DirTree
             Console.WriteLine(sb.ToString());
         }
 
-        private List<FolderItem> GetFolderItems(DirectoryInfo directoryInfo)
+        private IEnumerable<FolderItem> GetFolderItems(DirectoryInfo directoryInfo)
         {
             var filesInDirectory = directoryInfo.GetFiles();
             var directoriesInDirectory = directoryInfo.GetDirectories();
