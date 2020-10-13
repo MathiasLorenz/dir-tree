@@ -78,11 +78,10 @@ namespace DirTreeTest
             result.FileCount.ShouldBe(0);
         }
 
-        private string SetUpFolders()
+        private static string SetUpFolders()
         {
             string basePath = "test-dir";
-            var directoryInfo = new DirectoryInfo(basePath);
-            if (directoryInfo.Exists)
+            if (new DirectoryInfo(basePath).Exists)
             {
                 Directory.Delete(basePath, true);
             }
