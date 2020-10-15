@@ -2,7 +2,7 @@
   "profiles": {
     "DirTree": {
       "commandName": "Project",
-      "commandLineArgs": "--path \"C:\\Users\\malle\\source\\repos\\dir-tree\\DirTree\" --only-directories false --max-depth 10 --ordering filesize"
+      "commandLineArgs": "--path \"C:\\Users\\malle\\source\\repos\\dir-tree\\DirTree\" --only-directories false --max-depth 10 --ordering alphabetically"
     }
   }
 }
