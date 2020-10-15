@@ -81,6 +81,7 @@ namespace DirTree
                             Path = x.FullName,
                             Name = x.Name,
                             LastModification = x.LastWriteTimeUtc,
+                            FileSize = x.Length,
                             IsDirectory = false
                         })
                 );
@@ -93,6 +94,7 @@ namespace DirTree
                         Path = x.FullName,
                         Name = x.Name,
                         LastModification = x.LastWriteTimeUtc,
+                        FileSize = null,
                         IsDirectory = true
                     })
             );

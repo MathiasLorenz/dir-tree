@@ -3,6 +3,7 @@
     public enum TreeRunnerOrdering
     {
         Alphabetically,
-        LastModification
+        LastModification,
+        FileSize
     }
 }

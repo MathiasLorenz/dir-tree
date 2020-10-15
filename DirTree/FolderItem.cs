@@ -8,5 +8,6 @@ namespace DirTree
 		public string Path { get; init; } = "";
 		public bool IsDirectory { get; init; }
 		public DateTime LastModification { get; init; }
+		public long? FileSize { get; init; } = null; 
 	}
 }

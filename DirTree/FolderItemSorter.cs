@@ -12,6 +12,7 @@ namespace DirTree
             {
                 TreeRunnerOrdering.Alphabetically => items.OrderBy(x => x.Name),
                 TreeRunnerOrdering.LastModification => items.OrderBy(x => x.LastModification),
+                TreeRunnerOrdering.FileSize => items.OrderBy(x => x.FileSize),
                 _ => throw new Exception("Unknown ordering chosen.")
             };
         }
