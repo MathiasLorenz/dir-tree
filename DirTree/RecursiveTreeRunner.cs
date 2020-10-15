@@ -28,16 +28,17 @@ namespace DirTree
 
             var directoryInfo = new DirectoryInfo(_options.Path);
             var folderItems = GetFolderItems(directoryInfo);
+            var sortedFolderItems = FolderItemSorter.Sort(folderItems, _options.Ordering);
             int fileCount = 0;
             int directoryCount = 0;
 
-            foreach (var info in folderItems.OrderBy(x => x.Path))
+            foreach (var folderItem in sortedFolderItems)
             {
-                WriteNameToOutput(info.Name);
+                WriteNameToOutput(folderItem.Name);
 
-                if (info.IsDirectory)
+                if (folderItem.IsDirectory)
                 {
-                    var runner = new RecursiveTreeRunner(_options with { Path = info.Path }, _level + 1);
+                    var runner = new RecursiveTreeRunner(_options with { Path = folderItem.Path }, _level + 1);
                     var subFolderCounts = runner.Run();
 
                     fileCount += subFolderCounts.FileCount;
@@ -79,6 +80,7 @@ namespace DirTree
                         {
                             Path = x.FullName,
                             Name = x.Name,
+                            LastModification = x.LastWriteTimeUtc,
                             IsDirectory = false
                         })
                 );
@@ -90,6 +92,7 @@ namespace DirTree
                     {
                         Path = x.FullName,
                         Name = x.Name,
+                        LastModification = x.LastWriteTimeUtc,
                         IsDirectory = true
                     })
             );
