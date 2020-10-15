@@ -1,6 +1,6 @@
 # dir-tree
 
-My version of the Unix `tree` utility to show a tree view of a specified directory written in .NET 5.
+My version of the Unix `tree` utility to show tree view of specified directory. Written in .NET 5.
 
 Supports the following parameters:
 
