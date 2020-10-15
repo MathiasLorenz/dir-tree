@@ -5,5 +5,9 @@ My version of the Unix `tree` utility to show a tree view of a specified directo
 Supports the following parameters:
 
 * [Required] --path: Path to directory to start the tree view.
-* [Optional] --max-depth: Max directory depth to go to. Default: infinite.
-* [Optional] --only-directories: Show only directories (i.e. do not show files). Default: false (i.e. directories are shown).
+* [Optional] --max-depth [default: infinite]: Max directory depth to go to.
+* [Optional] --only-directories [default: false]: Show only directories (i.e. do not show files).
+* [Optional] --ordering: How to order files and folders. Has following options:
+  * Alphabetically [default].
+  * LastModification.
+  * FileSize. Orders by file size, then alphabetically.
