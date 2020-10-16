@@ -49,8 +49,8 @@ namespace DirTreeTest
                 Path = basePath,
                 MaxDepth = maxDepth
             };
-            var iterativeRunner = new RecursiveTreeRunner(options, 0);
-            var result = iterativeRunner.Run();
+            var recursiveRunner = new RecursiveTreeRunner(options, 0);
+            var result = recursiveRunner.Run();
 
             result.ShouldNotBeNull();
             result.DirectoryCount.ShouldBe(expectedDirectoryCount);
@@ -70,8 +70,8 @@ namespace DirTreeTest
                 OnlyDirectories = true,
                 MaxDepth = maxDepth
             };
-            var iterativeRunner = new RecursiveTreeRunner(options, 0);
-            var result = iterativeRunner.Run();
+            var recursiveRunner = new RecursiveTreeRunner(options, 0);
+            var result = recursiveRunner.Run();
 
             result.ShouldNotBeNull();
             result.DirectoryCount.ShouldBe(expectedDirectoryCount);
